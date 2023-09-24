@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * 普通消息发送者
+ *
+ * @公众号：马丁玩编程，回复：加群，添加马哥微信（备注：ladder）获取更多项目资料
  */
 @Slf4j
 @Component
