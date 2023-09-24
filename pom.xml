@@ -5,10 +5,15 @@
     <groupId>com.nageoffer.springboot-ladder</groupId>
     <artifactId>springboot-ladder-all</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <description>
         🔥🔥🔥 从零到一学习SpringBoot各种组件框架实战的项目，包括不限于RocketMQ、ShardingSphere、Redisson、Sentinel、Hippo4j等。
     </description>
+
+    <modules>
+        <module>mq-rocketmq-4x</module>
+    </modules>
 
     <properties>
         <java.version>17</java.version>
@@ -26,10 +31,13 @@
         <guava.version>30.0-jre</guava.version>
         <xxl-job.version>2.3.1</xxl-job.version>
         <alipay-sdk-java.version>4.38.10.ALL</alipay-sdk-java.version>
-        <rocketmq-spring-boot-starter.version>2.2.3</rocketmq-spring-boot-starter.version>
+        <rocketmq-spring-boot-starter-4x.version>2.2.3</rocketmq-spring-boot-starter-4x.version>
         <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
         <hippo4j-threadpool-config-mode.version>1.5.0</hippo4j-threadpool-config-mode.version>
         <micrometer-registry-prometheus.version>1.10.6</micrometer-registry-prometheus.version>
+        <!-- Maven编译相关 -->
+        <maven-common-plugin.version>3.1.0</maven-common-plugin.version>
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
     </properties>
 
     <dependencies>
@@ -43,6 +51,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -54,6 +67,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -62,6 +83,43 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${maven-common-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-common-plugin.version}</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-common-plugin.version}</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
