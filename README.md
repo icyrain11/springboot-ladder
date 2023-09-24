@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-SpringBoot “梯子”，从零到一学习 SpringBoot 各种组件框架实战的项目，让 Demo 变得简单。
+SpringBoot “学习梯”，从零到一学习 SpringBoot 各种组件框架实战的项目，让 Demo 变得简单。
 
 配套学习网站：[拿个offer-开源&项目实战](https://nageoffer.com/readme/rocketmq)
 
