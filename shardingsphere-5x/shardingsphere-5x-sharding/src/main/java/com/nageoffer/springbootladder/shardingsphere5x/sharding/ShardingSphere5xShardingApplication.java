@@ -46,7 +46,7 @@ public class ShardingSphere5xShardingApplication {
 
     @GetMapping("/test/shardingsphere-jdbc/user")
     @Operation(summary = "ShardingSphere分片测试之用户查询")
-    public String findUserById(@RequestParam String userId) {
+    public String findUserById(@RequestParam Long userId) {
         UserDO result = userService.getById(userId);
         return JSON.toJSONString(result);
     }
