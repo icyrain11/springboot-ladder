@@ -14,6 +14,7 @@
     <modules>
         <module>mq-rocketmq-4x</module>
         <module>shardingsphere-5x</module>
+        <module>redis-6x</module>
     </modules>
 
     <properties>

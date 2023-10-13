@@ -1,0 +1,5 @@
+spring:
+  data:
+    redis:
+      host: 6379
+      password:
