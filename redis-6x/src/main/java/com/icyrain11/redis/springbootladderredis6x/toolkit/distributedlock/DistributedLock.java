@@ -6,10 +6,9 @@ package com.icyrain11.redis.springbootladderredis6x.toolkit.distributedlock;
  */
 public interface DistributedLock {
 
-    void lock();
+    Boolean lock(String serviceName, Long expireTime);
 
 
-    void unLock();
-
+    Boolean unlock(String serviceName);
 
 }
