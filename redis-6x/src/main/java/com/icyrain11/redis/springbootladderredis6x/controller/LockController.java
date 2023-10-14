@@ -22,9 +22,13 @@ public class LockController {
 
     @GetMapping("/api/lock-service/{serviceName}")
     public String lock(@PathVariable String serviceName) {
-        Boolean lock = distributedLock.lock(serviceName, 500L);
-        log.info("has been lock {}", serviceName);
-        return lock.toString() + serviceName;
+        try {
+            Boolean lock = distributedLock.lock(serviceName, 500L);
+            log.info("has been lock {}", serviceName);
+        } finally {
+            distributedLock.unlock(serviceName);
+        }
+        return "has lock";
     }
 
     @GetMapping("/api/unlock-service/{serviceName}")
